@@ -1,0 +1,48 @@
+{
+  "target_distance_m": 50,
+  "length_m": 53.0,
+  "width_m": 6.0,
+  "height_m": 10.0,
+  "corner_points_xyz": {
+    "front_bottom_left": [
+      50,
+      -3.0,
+      0
+    ],
+    "front_bottom_right": [
+      50,
+      3.0,
+      0
+    ],
+    "front_top_left": [
+      50,
+      -3.0,
+      10.0
+    ],
+    "front_top_right": [
+      50,
+      3.0,
+      10.0
+    ],
+    "back_bottom_left": [
+      -3.0,
+      -3.0,
+      0
+    ],
+    "back_bottom_right": [
+      -3.0,
+      3.0,
+      0
+    ],
+    "back_top_left": [
+      -3.0,
+      -3.0,
+      10.0
+    ],
+    "back_top_right": [
+      -3.0,
+      3.0,
+      10.0
+    ]
+  }
+}
