@@ -21,7 +21,7 @@ Z_POS = 1.7       # Prop height
 rotations = [
     ("rotation_1_pitch90_yaw0_roll0", carla.Rotation(pitch=90.0, yaw=0.0, roll=0.0)),
     ("rotation_2_pitch90_yaw60_roll0", carla.Rotation(pitch=90.0, yaw=60.0, roll=0.0)),
-    ("rotation_3_pitch90_yaw0_roll60", carla.Rotation(pitch=60.0, yaw=0.0, roll=0.0)),
+    ("rotation_3_pitch60_yaw0_roll0", carla.Rotation(pitch=60.0, yaw=0.0, roll=0.0)),
 ]
 
 def run(client, world, lidar):
