@@ -107,24 +107,14 @@ def compute_target_vicinity(target_distance_m: float, grade: str, rotation: tupl
     # Apply vertical shift and then rotation
     z_shift = 0
     pitch, yaw, roll = rotation
-    center_of_rotation = [target_distance_m, 0.0, 0.0]  # center of target cube
+    center_of_rotation = [target_distance_m, 0.0, 0.0]  # center of rotation (LiDAR center or PCD center)
     for key, point in corners.items():
-        point[2] += z_shift  # Apply vertical shift first
-
-        # --- Start: Rotate around center_of_rotation ---
-        # Step 1: Translate point to origin
-        translated = [point[i] - center_of_rotation[i] for i in range(3)]
-
-        # Step 2: Rotate in place
-        rotated = rotate_point(translated, pitch, yaw, roll)
-
-        # Step 3: Translate back
-        rotated_back = [rotated[i] + center_of_rotation[i] for i in range(3)]
-
-        # Store updated point
+        point[2] += z_shift  # Apply vertical shift first (not_used)
+        translated = [point[i] - center_of_rotation[i] for i in range(3)] # translate to origin
+        rotated = rotate_point(translated, pitch, yaw, roll) #rotate about origin
+        rotated_back = [rotated[i] + center_of_rotation[i] for i in range(3)] # push pack to the plane origin
         corners[key] = rotated_back
-        # --- End ---
-
+        
 
 
     return {
