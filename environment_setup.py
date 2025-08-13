@@ -27,7 +27,7 @@ def main():
     world = client.load_world('Lidar_Testing_Ground')
 
     settings = world.get_settings()
-    settings.fixed_delta_seconds = 0.05
+    settings.fixed_delta_seconds = 0.010
     settings.synchronous_mode = False
     world.apply_settings(settings)
 
@@ -39,14 +39,26 @@ def main():
 
     # LiDAR blueprint and settings
     lidar_bp = blueprint_library.find('sensor.lidar.ray_cast')
-    lidar_bp.set_attribute('horizontal_fov', '360')
-    lidar_bp.set_attribute('sensor_tick', '0.1')
-    lidar_bp.set_attribute('range', '100')
+
+    # Geometry/scan budget
     lidar_bp.set_attribute('channels', '64')
-    lidar_bp.set_attribute('points_per_second', '1300000')
+    lidar_bp.set_attribute('points_per_second', '7300000')
     lidar_bp.set_attribute('rotation_frequency', '10')
-    lidar_bp.set_attribute('upper_fov', '7')
+    lidar_bp.set_attribute('sensor_tick', '0.1')
+
+    # Coverage
+    lidar_bp.set_attribute('horizontal_fov', '360')
+    lidar_bp.set_attribute('upper_fov', '7')    # total 23°
     lidar_bp.set_attribute('lower_fov', '-16')
+    lidar_bp.set_attribute('range', '100')
+
+    # IMPORTANT: eliminate artificial point drop/attenuation
+    lidar_bp.set_attribute('dropoff_general_rate', '0.0')
+    lidar_bp.set_attribute('dropoff_intensity_limit', '1.0')
+    lidar_bp.set_attribute('dropoff_zero_intensity', '0.0')
+    lidar_bp.set_attribute('atmosphere_attenuation_rate', '0.0')
+    lidar_bp.set_attribute('noise_stddev', '0.0')  # optional: 0 for determinism
+
 
     # Spawn LiDAR
     lidar_transform = carla.Transform(lidar_location, lidar_rotation)
