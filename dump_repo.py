@@ -1,3 +1,5 @@
+#Converts all the scripts to a single text file for easy sharing with others
+
 import os
 
 root_dir = r"C:\Stand_Alone_Lidar_KPI_Evaluation"
