@@ -6,7 +6,7 @@ def setup_environment(use_mesh=False, headless=False):
     client = carla.Client('localhost', 2000)
     client.set_timeout(10.0)
 
-    print("[INFO] Loading map: Lidar_Testing_Ground")
+    print("[INFO] Loading map: Proving_Ground")
     world = client.load_world('Proving_Ground')
 
     # Headless rendering

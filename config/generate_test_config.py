@@ -1,6 +1,9 @@
 import os
 import math
 import json
+# add near the top of the file:
+from typing import Optional, Dict, List, Any
+
 
 
 def deg_to_rad(deg):
@@ -143,43 +146,157 @@ def generate_target_vicinity_configs(output_root: str, grade: str, distances: li
         print(f"[INFO] Saved target_vicinity.json at {out_path}")
 
 
-def compute_control_volume(target_distance_m: float):
+def compute_control_volume(
+    target_distance_m: float,
+    target_vicinity_corners_xyz: Optional[Dict[str, List[float]]] = None,
+    lateral_half_width_m: float = 3.0,
+    extra_front_space_m: float = 3.0,
+    vertical_margin_up_m: float = 100.0,
+    frame_rate_hz: float = 10.0,
+) -> Dict[str, Any]:
     """
-    Compute control volume as a rectangular cuboid aligned with sensor's Cartesian system.
+    Control volume per DIN SAE 91471 (axis-aligned to sensor), with timing info:
+      - x: [0, target_distance + extra_front_space]  (forward only, +3 m beyond target)
+      - y: [-lateral_half_width, +lateral_half_width]  (≥ 6 m width total)
+      - z: [lower edge of target, lower edge + vertical_margin_up]  (no upper restriction → large margin)
+    Also embeds frame_rate_hz and frame_dt for KPI-3 (Hz).
     """
-    length = max(target_distance_m + 3.0, 3.0)
-    half_width = 3.0
-    height = 10.0
+    # Timing
+    fr = float(frame_rate_hz)
+    frame_dt = (1.0 / fr) if fr > 0 else None
+
+    # Longitudinal (sensor at x=0)
+    x_min = 0.0
+    x_max = float(target_distance_m + extra_front_space_m)
+
+    # Lateral
+    y_min = -float(lateral_half_width_m)
+    y_max = +float(lateral_half_width_m)
+
+    # Vertical: bottom at target lower edge if available; otherwise 0
+    if target_vicinity_corners_xyz:
+        zs = [float(v[2]) for v in target_vicinity_corners_xyz.values()]
+        z_bottom = float(min(zs))
+    else:
+        z_bottom = 0.0
+    z_top = z_bottom + float(vertical_margin_up_m)
 
     corners = {
-        "front_bottom_left":  [target_distance_m, -half_width, 0],
-        "front_bottom_right": [target_distance_m, half_width, 0],
-        "front_top_left":     [target_distance_m, -half_width, height],
-        "front_top_right":    [target_distance_m, half_width, height],
-        "back_bottom_left":   [-3.0, -half_width, 0],
-        "back_bottom_right":  [-3.0, half_width, 0],
-        "back_top_left":      [-3.0, -half_width, height],
-        "back_top_right":     [-3.0, half_width, height],
+        "front_bottom_left":  [x_max, y_min, z_bottom],
+        "front_bottom_right": [x_max, y_max, z_bottom],
+        "front_top_left":     [x_max, y_min, z_top],
+        "front_top_right":    [x_max, y_max, z_top],
+        "back_bottom_left":   [x_min, y_min, z_bottom],
+        "back_bottom_right":  [x_min, y_max, z_bottom],
+        "back_top_left":      [x_min, y_min, z_top],
+        "back_top_right":     [x_min, y_max, z_top],
     }
 
     return {
-        "target_distance_m": target_distance_m,
-        "length_m": length,
-        "width_m": 2 * half_width,
-        "height_m": height,
+        "target_distance_m": float(target_distance_m),
+        "width_m": float(2 * lateral_half_width_m),
+        "extra_front_space_m": float(extra_front_space_m),
+        "z_bottom_m": float(z_bottom),
+        "z_top_m": float(z_top),
+        "frame_rate_hz": fr,        # used by evaluator to compute KPI-3 in Hz
+        "frame_dt": frame_dt,       # evaluator also accepts this directly
         "corner_points_xyz": corners
     }
 
 
-def generate_control_volume_configs(output_root: str, distances: list):
+
+def generate_control_volume_configs(output_root: str, distances: list, frame_rate_hz: float = 10.0):
     """
-    Generate `control_volume.json` files in each distance folder.
+    Generate control_volume.json files with timing info.
     """
     for dist in distances:
-        control_volume_data = compute_control_volume(dist)
         dist_folder = os.path.join(output_root, f"{int(dist)}m")
         os.makedirs(dist_folder, exist_ok=True)
+
+        # try to read target_vicinity to set z-bottom properly
+        vicinity_path = os.path.join(dist_folder, "target_vicinity.json")
+        vicinity_corners = None
+        if os.path.exists(vicinity_path):
+            with open(vicinity_path, "r") as f:
+                v = json.load(f)
+            vicinity_corners = v.get("corner_points_xyz")
+
+        control_volume_data = compute_control_volume(
+            target_distance_m=dist,
+            target_vicinity_corners_xyz=vicinity_corners,
+            frame_rate_hz=frame_rate_hz
+        )
+
         out_path = os.path.join(dist_folder, "control_volume.json")
         with open(out_path, 'w') as f:
             json.dump(control_volume_data, f, indent=2)
         print(f"[INFO] Saved control_volume.json at {out_path}")
+def compute_target_vicinity_centered(center_xyz, grade, target_distance_m=None):
+    """
+    Build a frustum-like vicinity around the LOS to center_xyz.
+    Used by Angular-Separability: ONLY the back plane gets a vicinity.
+    Leaves the original multi-domain vicinity function untouched.
+    """
+    import math
+
+    cx, cy, cz = map(float, center_xyz)
+    r_center = math.sqrt(cx*cx + cy*cy + cz*cz)
+
+    # Use the caller-specified target distance for tolerance, or fall back to center range
+    if target_distance_m is None:
+        target_distance_m = r_center
+
+    grade_tolerances = {
+        "0": {"delta_r": 0.10, "delta_ang_deg": 0.0},
+        "A": {"delta_r": 0.02, "delta_ang_deg": 0.2},
+        "B": {"delta_r": 0.05, "delta_ang_deg": 0.5},
+        "C": {"delta_r": 0.10, "delta_ang_deg": 1.0}
+    }
+    if grade not in grade_tolerances:
+        raise ValueError(f"Unsupported grade: {grade}")
+
+    tol = grade_tolerances[grade]
+    delta_r = tol["delta_r"] * float(target_distance_m)
+    r_min = max(0.0, r_center - delta_r)
+    r_max = r_center + delta_r
+
+    # 1x1 m target angular half-extent at this range (+ grade angular tolerance)
+    half_target = 0.5
+    core_half_deg = math.degrees(math.atan(half_target / max(r_center, 1e-6)))
+    half_az = core_half_deg + tol["delta_ang_deg"]
+    half_el_low = core_half_deg
+    half_el_up  = core_half_deg + tol["delta_ang_deg"]
+
+    az_center = math.degrees(math.atan2(cy, cx))
+    el_center = math.degrees(math.atan2(cz, math.sqrt(cx*cx + cy*cy)))
+
+    def sph_to_xyz(r, az_deg, el_deg):
+        az = math.radians(az_deg); el = math.radians(el_deg)
+        x = r * math.cos(el) * math.cos(az)
+        y = r * math.cos(el) * math.sin(az)
+        z = r * math.sin(el)
+        return [x, y, z]
+
+    corners = {
+        "front_lower_left":  sph_to_xyz(r_min, az_center - half_az, el_center - half_el_low),
+        "front_lower_right": sph_to_xyz(r_min, az_center + half_az, el_center - half_el_low),
+        "front_upper_left":  sph_to_xyz(r_min, az_center - half_az, el_center + half_el_up),
+        "front_upper_right": sph_to_xyz(r_min, az_center + half_az, el_center + half_el_up),
+        "back_lower_left":   sph_to_xyz(r_max, az_center - half_az, el_center - half_el_low),
+        "back_lower_right":  sph_to_xyz(r_max, az_center + half_az, el_center - half_el_low),
+        "back_upper_left":   sph_to_xyz(r_max, az_center - half_az, el_center + half_el_up),
+        "back_upper_right":  sph_to_xyz(r_max, az_center + half_az, el_center + half_el_up),
+    }
+
+    return {
+        "mode": "angular_sep_back_only",
+        "center_xyz": [cx, cy, cz],
+        "target_distance_m": float(target_distance_m),
+        "grade": grade,
+        "r_min": round(r_min, 4),
+        "r_max": round(r_max, 4),
+        "half_azimuth_deg": round(half_az, 6),
+        "half_elevation_low_deg": round(half_el_low, 6),
+        "half_elevation_up_deg": round(half_el_up, 6),
+        "corner_points_xyz": corners
+    }

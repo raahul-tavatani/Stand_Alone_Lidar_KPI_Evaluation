@@ -1,0 +1,12 @@
+# .PCD v0.7 - Point Cloud Data file format
+VERSION 0.7
+FIELDS x y z
+SIZE 4 4 4
+TYPE F F F
+COUNT 1 1 1
+WIDTH 149
+HEIGHT 1
+VIEWPOINT 0 0 0 1 0 0 0
+POINTS 149
+DATA binary
+ÔÈBnsu¾=æã=&ÄÈBÔ~b¾{Øã=û’ÈB½·)¾\›ã==rÈBhê¾Gyã=äaÈB½â½…kã=IÈB=r–¼Gã=þÿÇB‚§6Röâ=ð¾ÇB·@–=®«â=BŽÇB?V>®sâ=«]ÇBr;>\=â=T=ÇB~É`>Ìâ=.-ÇBªns>fâ=&ÄÈBÔ~b¾{Øã=Á³ÈBËO¾Äã=\£ÈBi¡<¾Â¯ã=û’ÈB½·)¾\›ã=äaÈB½â½…kã=‹QÈBÎR¼½Pã=æ0ÈBiÚa½=,ã=• ÈBF€½Gã=¸ïÇB^–<×ãâ=tßÇBæO=\Ñâ=´®ÇBÔ¾»=G™â=BŽÇB?V>®sâ=~ÇBÌ>bâ=«]ÇBr;>\=â=€MÇB N>=*â=8'ÇBƒ>fúá=ÔÈBnsu¾=æã=\£ÈBi¡<¾Â¯ã=û’ÈB½·)¾\›ã==rÈBhê¾Gyã=äaÈB½â½…kã=7AÈB›–½R<ã=æ0ÈBiÚa½=,ã=tßÇBæO=\Ñâ=2ÏÇBina=á¾â=ð¾ÇB·@–=®«â=~ÇBÌ>bâ=«]ÇBr;>\=â=€MÇB N>=*â=.-ÇBªns>fâ=8'ÇBƒ>fúá=ÔÈBnsu¾=æã=Á³ÈBËO¾Äã=\£ÈBi¡<¾Â¯ã==rÈBhê¾Gyã=‹QÈBÎR¼½Pã=7AÈB›–½R<ã=æ0ÈBiÚa½=,ã=• ÈBF€½Gã=IÈB=r–¼Gã=þÿÇB‚§6Röâ=¸ïÇB^–<×ãâ=ð¾ÇB·@–=®«â=BŽÇB?V>®sâ=~ÇBÌ>bâ=ÝmÇB°¾(>Pâ=T=ÇB~É`>Ìâ=.-ÇBªns>fâ=8'ÇBƒ>fúá=Á³ÈBËO¾Äã=\£ÈBi¡<¾Â¯ã=û’ÈB½·)¾\›ã=›‚ÈB‡Ï¾RŠã=äaÈB½â½…kã=7AÈB›–½R<ã=æ0ÈBiÚa½=,ã=• ÈBF€½Gã=¸ïÇB^–<×ãâ=tßÇBæO=\Ñâ=´®ÇBÔ¾»=G™â=ÝmÇB°¾(>Pâ=€MÇB N>=*â=T=ÇB~É`>Ìâ=û’ÈB½·)¾\›ã=äaÈB½â½…kã=‹QÈBÎR¼½Pã=7AÈB›–½R<ã=• ÈBF€½Gã=IÈB=r–¼Gã=2ÏÇBina=á¾â={žÇBA5á=á†â=~ÇBÌ>bâ=ÝmÇB°¾(>Pâ=«]ÇBr;>\=â=&ÄÈBÔ~b¾{Øã=\£ÈBi¡<¾Â¯ã=›‚ÈB‡Ï¾RŠã==rÈBhê¾Gyã=7AÈB›–½R<ã=þÿÇB‚§6Röâ=¸ïÇB^–<×ãâ=tßÇBæO=\Ñâ=2ÏÇBina=á¾â=´®ÇBÔ¾»=G™â=ÝmÇB°¾(>Pâ=€MÇB N>=*â=T=ÇB~É`>Ìâ=.-ÇBªns>fâ=ÔÈBnsu¾=æã=Á³ÈBËO¾Äã=›‚ÈB‡Ï¾RŠã=‹QÈBÎR¼½Pã=7AÈB›–½R<ã=æ0ÈBiÚa½=,ã=IÈB=r–¼Gã=¸ïÇB^–<×ãâ=tßÇBæO=\Ñâ=2ÏÇBina=á¾â=ð¾ÇB·@–=®«â=´®ÇBÔ¾»=G™â={žÇBA5á=á†â=BŽÇB?V>®sâ=~ÇBÌ>bâ=ÝmÇB°¾(>Pâ=.-ÇBªns>fâ=8'ÇBƒ>fúá=ÔÈBnsu¾=æã=&ÄÈBÔ~b¾{Øã=Á³ÈBËO¾Äã==rÈBhê¾Gyã=‹QÈBÎR¼½Pã=æ0ÈBiÚa½=,ã=• ÈBF€½Gã=IÈB=r–¼Gã=tßÇBæO=\Ñâ=2ÏÇBina=á¾â=ð¾ÇB·@–=®«â=BŽÇB?V>®sâ=ÝmÇB°¾(>Pâ=«]ÇBr;>\=â=€MÇB N>=*â=ÔÈBnsu¾=æã=Á³ÈBËO¾Äã==rÈBhê¾Gyã=äaÈB½â½…kã=æ0ÈBiÚa½=,ã=• ÈBF€½Gã=IÈB=r–¼Gã=þÿÇB‚§6Röâ=tßÇBæO=\Ñâ=ð¾ÇB·@–=®«â=BŽÇB?V>®sâ=~ÇBÌ>bâ=ÝmÇB°¾(>Pâ=T=ÇB~É`>Ìâ=.-ÇBªns>fâ=8'ÇBƒ>fúá=

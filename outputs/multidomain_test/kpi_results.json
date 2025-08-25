@@ -1,0 +1,812 @@
+[
+  {
+    "rotation": "rotation_1_pitch90_yaw0_roll0",
+    "distance_m": 100,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 0.972953,
+    "target_extent_el_deg": 0.772953,
+    "KPI_1_TP_Prob": 0.510909,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 73.133729,
+    "KPI_3_Revisit_Rate": 5.109091,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": 0.000438,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.024165,
+      "elevation_std_deg": 0.0
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.020109,
+      "elevation_abs_mean_deg": 0.0635,
+      "magnitude_abs_mean_deg": 0.067445
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_1_pitch90_yaw0_roll0",
+    "distance_m": 10,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 6.12481,
+    "target_extent_el_deg": 5.92481,
+    "KPI_1_TP_Prob": 0.552409,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 240.187337,
+    "KPI_3_Revisit_Rate": 5.524094,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": 0.008526,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.014088,
+      "elevation_std_deg": 0.015973
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.011695,
+      "elevation_abs_mean_deg": 0.126631,
+      "magnitude_abs_mean_deg": 0.127326
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_1_pitch90_yaw0_roll0",
+    "distance_m": 20,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 3.264192,
+    "target_extent_el_deg": 3.064192,
+    "KPI_1_TP_Prob": 0.548489,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 218.353854,
+    "KPI_3_Revisit_Rate": 5.48489,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": 0.004253,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.017745,
+      "elevation_std_deg": 0.01553
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.013899,
+      "elevation_abs_mean_deg": 0.122168,
+      "magnitude_abs_mean_deg": 0.12333
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_1_pitch90_yaw0_roll0",
+    "distance_m": 30,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 2.309683,
+    "target_extent_el_deg": 2.109683,
+    "KPI_1_TP_Prob": 0.554586,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 185.728774,
+    "KPI_3_Revisit_Rate": 5.545856,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": 0.002591,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.007435,
+      "elevation_std_deg": 0.018176
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.007813,
+      "elevation_abs_mean_deg": 0.059145,
+      "magnitude_abs_mean_deg": 0.059877
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_1_pitch90_yaw0_roll0",
+    "distance_m": 40,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 1.83232,
+    "target_extent_el_deg": 1.63232,
+    "KPI_1_TP_Prob": 0.55521,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 182.886125,
+    "KPI_3_Revisit_Rate": 5.552102,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": 0.002158,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.011584,
+      "elevation_std_deg": 0.01726
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.01049,
+      "elevation_abs_mean_deg": 0.122401,
+      "magnitude_abs_mean_deg": 0.122984
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_1_pitch90_yaw0_roll0",
+    "distance_m": 50,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 1.545877,
+    "target_extent_el_deg": 1.345877,
+    "KPI_1_TP_Prob": 0.540979,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 157.169115,
+    "KPI_3_Revisit_Rate": 5.409786,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": 0.001543,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.0132,
+      "elevation_std_deg": 0.018607
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.008301,
+      "elevation_abs_mean_deg": 0.061026,
+      "magnitude_abs_mean_deg": 0.062609
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_1_pitch90_yaw0_roll0",
+    "distance_m": 60,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 1.354908,
+    "target_extent_el_deg": 1.154908,
+    "KPI_1_TP_Prob": 0.559707,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 174.463974,
+    "KPI_3_Revisit_Rate": 5.59707,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": 0.001545,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.013456,
+      "elevation_std_deg": 0.017335
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.010344,
+      "elevation_abs_mean_deg": 0.062775,
+      "magnitude_abs_mean_deg": 0.064529
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_1_pitch90_yaw0_roll0",
+    "distance_m": 70,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 1.218497,
+    "target_extent_el_deg": 1.018497,
+    "KPI_1_TP_Prob": 0.537013,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 124.089871,
+    "KPI_3_Revisit_Rate": 5.37013,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": 0.001051,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.019234,
+      "elevation_std_deg": 0.012571
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.014598,
+      "elevation_abs_mean_deg": 0.121883,
+      "magnitude_abs_mean_deg": 0.123502
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_1_pitch90_yaw0_roll0",
+    "distance_m": 80,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 1.116188,
+    "target_extent_el_deg": 0.916188,
+    "KPI_1_TP_Prob": 0.527737,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 133.967264,
+    "KPI_3_Revisit_Rate": 5.277372,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": 0.001054,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.01479,
+      "elevation_std_deg": 0.019058
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.010145,
+      "elevation_abs_mean_deg": 0.119963,
+      "magnitude_abs_mean_deg": 0.120824
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_1_pitch90_yaw0_roll0",
+    "distance_m": 90,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 1.036613,
+    "target_extent_el_deg": 0.836613,
+    "KPI_1_TP_Prob": 0.515574,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 140.675466,
+    "KPI_3_Revisit_Rate": 5.155738,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": 0.001051,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.014952,
+      "elevation_std_deg": 0.016884
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.010085,
+      "elevation_abs_mean_deg": 0.122586,
+      "magnitude_abs_mean_deg": 0.123318
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_2_pitch90_yaw60_roll0",
+    "distance_m": 100,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 2.472353,
+    "target_extent_el_deg": 0.786267,
+    "KPI_1_TP_Prob": 0.532143,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 14.403815,
+    "KPI_3_Revisit_Rate": 5.321429,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": -0.015389,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.00905,
+      "elevation_std_deg": 0.0
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.008605,
+      "elevation_abs_mean_deg": 0.0635,
+      "magnitude_abs_mean_deg": 0.064283
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_2_pitch90_yaw60_roll0",
+    "distance_m": 10,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 5.052414,
+    "target_extent_el_deg": 6.270441,
+    "KPI_1_TP_Prob": 0.551338,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 136.86497,
+    "KPI_3_Revisit_Rate": 5.513376,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": -0.023937,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.010684,
+      "elevation_std_deg": 0.015091
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.11954,
+      "elevation_abs_mean_deg": 0.032837,
+      "magnitude_abs_mean_deg": 0.12478
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_2_pitch90_yaw60_roll0",
+    "distance_m": 20,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 3.6213,
+    "target_extent_el_deg": 3.172024,
+    "KPI_1_TP_Prob": 0.558152,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 96.109875,
+    "KPI_3_Revisit_Rate": 5.581522,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": -0.010662,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.012194,
+      "elevation_std_deg": 0.025102
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.028076,
+      "elevation_abs_mean_deg": 0.123734,
+      "magnitude_abs_mean_deg": 0.127421
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_2_pitch90_yaw60_roll0",
+    "distance_m": 30,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 3.142764,
+    "target_extent_el_deg": 2.168003,
+    "KPI_1_TP_Prob": 0.538913,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 67.512799,
+    "KPI_3_Revisit_Rate": 5.38913,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": -0.012872,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.013144,
+      "elevation_std_deg": 0.028686
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.018695,
+      "elevation_abs_mean_deg": 0.066599,
+      "magnitude_abs_mean_deg": 0.070561
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_2_pitch90_yaw60_roll0",
+    "distance_m": 40,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 2.903363,
+    "target_extent_el_deg": 1.671338,
+    "KPI_1_TP_Prob": 0.552174,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 56.877882,
+    "KPI_3_Revisit_Rate": 5.521739,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": -0.003583,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.010858,
+      "elevation_std_deg": 0.017355
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.009923,
+      "elevation_abs_mean_deg": 0.122169,
+      "magnitude_abs_mean_deg": 0.122763
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_2_pitch90_yaw60_roll0",
+    "distance_m": 50,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 2.7597,
+    "target_extent_el_deg": 1.375042,
+    "KPI_1_TP_Prob": 0.573939,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 43.481676,
+    "KPI_3_Revisit_Rate": 5.739394,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": -0.018621,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.010917,
+      "elevation_std_deg": 0.024478
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.014097,
+      "elevation_abs_mean_deg": 0.057575,
+      "magnitude_abs_mean_deg": 0.060057
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_2_pitch90_yaw60_roll0",
+    "distance_m": 60,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 2.663919,
+    "target_extent_el_deg": 1.178218,
+    "KPI_1_TP_Prob": 0.537681,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 43.967554,
+    "KPI_3_Revisit_Rate": 5.376812,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": -0.006442,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.012326,
+      "elevation_std_deg": 0.024966
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.010809,
+      "elevation_abs_mean_deg": 0.066401,
+      "magnitude_abs_mean_deg": 0.067575
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_2_pitch90_yaw60_roll0",
+    "distance_m": 70,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 2.595502,
+    "target_extent_el_deg": 1.037977,
+    "KPI_1_TP_Prob": 0.54875,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 29.69484,
+    "KPI_3_Revisit_Rate": 5.4875,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": -0.00874,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.010952,
+      "elevation_std_deg": 0.02157
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.008776,
+      "elevation_abs_mean_deg": 0.120204,
+      "magnitude_abs_mean_deg": 0.120809
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_2_pitch90_yaw60_roll0",
+    "distance_m": 80,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 2.54419,
+    "target_extent_el_deg": 0.932984,
+    "KPI_1_TP_Prob": 0.530882,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 28.64739,
+    "KPI_3_Revisit_Rate": 5.308824,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": -0.031648,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.008052,
+      "elevation_std_deg": 0.014486
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.013986,
+      "elevation_abs_mean_deg": 0.117194,
+      "magnitude_abs_mean_deg": 0.118239
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_2_pitch90_yaw60_roll0",
+    "distance_m": 90,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 2.504281,
+    "target_extent_el_deg": 0.851435,
+    "KPI_1_TP_Prob": 0.516129,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 29.077494,
+    "KPI_3_Revisit_Rate": 5.16129,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": -0.003278,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.009419,
+      "elevation_std_deg": 0.01772
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.006403,
+      "elevation_abs_mean_deg": 0.106682,
+      "magnitude_abs_mean_deg": 0.107103
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_3_pitch60_yaw0_roll0",
+    "distance_m": 100,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 0.977961,
+    "target_extent_el_deg": 1.813494,
+    "KPI_1_TP_Prob": 0.507407,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 30.447827,
+    "KPI_3_Revisit_Rate": 5.074074,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": 0.06442,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.031824,
+      "elevation_std_deg": 0.0
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.02389,
+      "elevation_abs_mean_deg": 0.0635,
+      "magnitude_abs_mean_deg": 0.069943
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_3_pitch60_yaw0_roll0",
+    "distance_m": 10,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 6.296438,
+    "target_extent_el_deg": 6.269271,
+    "KPI_1_TP_Prob": 0.550972,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 192.886086,
+    "KPI_3_Revisit_Rate": 5.509719,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": -0.004676,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.020213,
+      "elevation_std_deg": 0.014
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.016058,
+      "elevation_abs_mean_deg": 0.142596,
+      "magnitude_abs_mean_deg": 0.144223
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_3_pitch60_yaw0_roll0",
+    "distance_m": 20,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 3.314,
+    "target_extent_el_deg": 3.795592,
+    "KPI_1_TP_Prob": 0.554569,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 151.368285,
+    "KPI_3_Revisit_Rate": 5.545693,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": 0.015159,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.016807,
+      "elevation_std_deg": 0.011399
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.01468,
+      "elevation_abs_mean_deg": 0.051316,
+      "magnitude_abs_mean_deg": 0.053789
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_3_pitch60_yaw0_roll0",
+    "distance_m": 30,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 2.335169,
+    "target_extent_el_deg": 2.969923,
+    "KPI_1_TP_Prob": 0.549615,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 131.069114,
+    "KPI_3_Revisit_Rate": 5.49615,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": 0.025567,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.015754,
+      "elevation_std_deg": 0.014627
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.013442,
+      "elevation_abs_mean_deg": 0.072988,
+      "magnitude_abs_mean_deg": 0.074504
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_3_pitch60_yaw0_roll0",
+    "distance_m": 40,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 1.848679,
+    "target_extent_el_deg": 2.556963,
+    "KPI_1_TP_Prob": 0.552078,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 86.524157,
+    "KPI_3_Revisit_Rate": 5.520782,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": 0.027927,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.018737,
+      "elevation_std_deg": 0.015106
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.014649,
+      "elevation_abs_mean_deg": 0.064533,
+      "magnitude_abs_mean_deg": 0.066881
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_3_pitch60_yaw0_roll0",
+    "distance_m": 50,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 1.557729,
+    "target_extent_el_deg": 2.309156,
+    "KPI_1_TP_Prob": 0.545566,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 90.908121,
+    "KPI_3_Revisit_Rate": 5.455657,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": 0.032488,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.021464,
+      "elevation_std_deg": 0.014569
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.015745,
+      "elevation_abs_mean_deg": 0.060687,
+      "magnitude_abs_mean_deg": 0.064885
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_3_pitch60_yaw0_roll0",
+    "distance_m": 60,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 1.364156,
+    "target_extent_el_deg": 2.143942,
+    "KPI_1_TP_Prob": 0.565934,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 62.229228,
+    "KPI_3_Revisit_Rate": 5.659341,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": -0.067618,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.017359,
+      "elevation_std_deg": 0.010156
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.014679,
+      "elevation_abs_mean_deg": 0.114111,
+      "magnitude_abs_mean_deg": 0.115342
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_3_pitch60_yaw0_roll0",
+    "distance_m": 70,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 1.226083,
+    "target_extent_el_deg": 2.025927,
+    "KPI_1_TP_Prob": 0.554487,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 62.803051,
+    "KPI_3_Revisit_Rate": 5.544872,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": -0.08744,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.018067,
+      "elevation_std_deg": 0.010976
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.013287,
+      "elevation_abs_mean_deg": 0.125829,
+      "magnitude_abs_mean_deg": 0.127095
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_3_pitch60_yaw0_roll0",
+    "distance_m": 80,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 1.122635,
+    "target_extent_el_deg": 1.937414,
+    "KPI_1_TP_Prob": 0.528261,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 63.447999,
+    "KPI_3_Revisit_Rate": 5.282609,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": -0.090668,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.025565,
+      "elevation_std_deg": 0.008044
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.020426,
+      "elevation_abs_mean_deg": 0.114298,
+      "magnitude_abs_mean_deg": 0.116761
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  },
+  {
+    "rotation": "rotation_3_pitch60_yaw0_roll0",
+    "distance_m": 90,
+    "test_type": "multi_domain",
+    "frame_count": 10,
+    "frame_dt_s": 0.1,
+    "target_extent_az_deg": 1.042238,
+    "target_extent_el_deg": 1.86857,
+    "KPI_1_TP_Prob": 0.522951,
+    "KPI_2_Angular_Cluster_Density_deg^-2": 31.322283,
+    "KPI_3_Revisit_Rate": 5.229508,
+    "KPI_4_False_Positive_Detection_Rate": null,
+    "KPI_5_False_Positive_Detection_Deviation_deg": null,
+    "KPI_6_False_Alarm_Rate_Hz": null,
+    "KPI_7_Radial_Precision_m": null,
+    "KPI_8_Radial_Accuracy_m": 0.058279,
+    "KPI_9_Angular_Precision_std_deg": {
+      "azimuth_std_deg": 0.018179,
+      "elevation_std_deg": 0.0
+    },
+    "KPI_10_Angular_Accuracy_abs_deg": {
+      "azimuth_abs_mean_deg": 0.015892,
+      "elevation_abs_mean_deg": 0.0635,
+      "magnitude_abs_mean_deg": 0.066242
+    },
+    "KPI_11_Surface_Differentiation_Accuracy": null
+  }
+]

@@ -1,0 +1,26 @@
+{
+  "test": "radial_separability_1",
+  "frame_dt_s": 0.1,
+  "capture_frames": 10,
+  "d0_list_m": [
+    10.0,
+    50.0,
+    100.0
+  ],
+  "gaps_m": [
+    0.05,
+    0.5,
+    1.0,
+    1.5,
+    2.0
+  ],
+  "tilt_deg": 45.0,
+  "overlap_mode": "angular",
+  "overlap_eps_deg": 0.2,
+  "overlap_delta_m": 0.04,
+  "plane_size_m": [
+    1.0,
+    1.0
+  ],
+  "grade": "0"
+}

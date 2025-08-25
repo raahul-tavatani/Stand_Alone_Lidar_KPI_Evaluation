@@ -9,7 +9,167 @@ import matplotlib.pyplot as plt
 from matplotlib.patches import Circle
 from collections import defaultdict
 
-# ----------------------------- IO & Filtering -----------------------------
+# ----------------------------- IO & Filtering ---------# We'll create a DataFrame from the user's pasted KPI table (3 rotations x 10 distances).
+# Then we'll make a few plots and save them as PNGs, and also show the table back.
+
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from math import tan, radians
+from caas_jupyter_tools import display_dataframe_to_user
+
+# Assemble the data: (rotation, distance, frame_dt_s, targ_az, targ_el, KPI1, KPI2, KPI3, KPI8, KPI9_az_std, KPI9_el_std, KPI10_az_abs, KPI10_el_abs, KPI10_mag_abs)
+rows = [
+    # rotation_1_pitch90_yaw0_roll0
+    ("rotation_1_pitch90_yaw0_roll0", 10, 0.1, 6.12481, 5.92481, 0.552409, 240.187337, 5.524094, 0.008526, 0.014088, 0.015973, 0.011695, 0.126631, 0.127326),
+    ("rotation_1_pitch90_yaw0_roll0", 20, 0.1, 3.264192, 3.064192, 0.55126, 218.253875, 5.512597, 0.004268, 0.016613, 0.017988, 0.014299, 0.123787, 0.124813),
+    ("rotation_1_pitch90_yaw0_roll0", 30, 0.1, 2.309683, 2.109683, 0.560773, 185.728774, 5.607735, 0.002615, 0.018397, 0.01538, 0.015794, 0.069577, 0.072519),
+    ("rotation_1_pitch90_yaw0_roll0", 40, 0.1, 1.83232, 1.63232, 0.542153, 183.220469, 5.421533, 0.002164, 0.021871, 0.012286, 0.015839, 0.116491, 0.118221),
+    ("rotation_1_pitch90_yaw0_roll0", 50, 0.1, 1.545877, 1.345877, 0.553211, 157.169115, 5.53211, 0.001538, 0.018344, 0.01313, 0.015204, 0.063719, 0.06612),
+    ("rotation_1_pitch90_yaw0_roll0", 60, 0.1, 1.354908, 1.154908, 0.567033, 174.463974, 5.67033, 0.001588, 0.010943, 0.020001, 0.008498, 0.072788, 0.07365),
+    ("rotation_1_pitch90_yaw0_roll0", 70, 0.1, 1.218497, 1.018497, 0.531818, 124.089871, 5.318182, 0.001066, 0.008166, 0.012294, 0.006579, 0.126665, 0.126897),
+    ("rotation_1_pitch90_yaw0_roll0", 80, 0.1, 1.116188, 0.916188, 0.514493, 134.945128, 5.144928, 0.00107, 0.016104, 0.015123, 0.013436, 0.128242, 0.129194),
+    ("rotation_1_pitch90_yaw0_roll0", 90, 0.1, 1.036613, 0.836613, 0.514876, 139.522388, 5.14876, 0.001047, 0.010218, 0.013611, 0.008517, 0.11725, 0.11764),
+    ("rotation_1_pitch90_yaw0_roll0", 100, 0.1, 0.972953, 0.772953, 0.538182, 73.133729, 5.381818, 0.000389, 0.02935, 0.0, 0.023344, 0.0635, 0.069051),
+    # rotation_2_pitch90_yaw60_roll0
+    ("rotation_2_pitch90_yaw60_roll0", 10, 0.1, 5.052414, 6.270441, 0.552054, 136.80184, 5.520535, -0.022756, 0.013305, 0.024063, 0.115828, 0.03312, 0.122038),
+    ("rotation_2_pitch90_yaw60_roll0", 20, 0.1, 3.6213, 3.172024, 0.551087, 96.109875, 5.51087, -0.008699, 0.014013, 0.01982, 0.024726, 0.133085, 0.135931),
+    ("rotation_2_pitch90_yaw60_roll0", 30, 0.1, 3.142764, 2.168003, 0.549237, 67.366032, 5.492375, -0.010301, 0.012582, 0.021555, 0.01583, 0.069517, 0.072126),
+    ("rotation_2_pitch90_yaw60_roll0", 40, 0.1, 2.903363, 1.671338, 0.548913, 56.877882, 5.48913, -0.011557, 0.012332, 0.02542, 0.012726, 0.116498, 0.117837),
+    ("rotation_2_pitch90_yaw60_roll0", 50, 0.1, 2.7597, 1.375042, 0.563636, 43.481676, 5.636364, -0.015622, 0.010491, 0.01391, 0.01412, 0.068607, 0.070689),
+    ("rotation_2_pitch90_yaw60_roll0", 60, 0.1, 2.663919, 1.178218, 0.564964, 43.648948, 5.649635, -0.0163, 0.012321, 0.021465, 0.012636, 0.063087, 0.065598),
+    ("rotation_2_pitch90_yaw60_roll0", 70, 0.1, 2.595502, 1.037977, 0.55375, 29.69484, 5.5375, -0.020876, 0.00538, 0.019868, 0.010698, 0.120027, 0.120614),
+    ("rotation_2_pitch90_yaw60_roll0", 80, 0.1, 2.54419, 0.932984, 0.519118, 28.64739, 5.191176, -0.021096, 0.009839, 0.026289, 0.010721, 0.131361, 0.132052),
+    ("rotation_2_pitch90_yaw60_roll0", 90, 0.1, 2.504281, 0.851435, 0.5, 29.077494, 5.0, -0.000458, 0.009432, 0.019087, 0.007442, 0.125557, 0.125862),
+    ("rotation_2_pitch90_yaw60_roll0", 100, 0.1, 2.472353, 0.786267, 0.546429, 14.403815, 5.464286, -0.031, 0.017648, 0.0, 0.016412, 0.0635, 0.066375),
+    # rotation_3_pitch60_yaw0_roll0
+    ("rotation_3_pitch60_yaw0_roll0", 10, 0.1, 6.296438, 6.269271, 0.549796, 192.860753, 5.497964, -0.003634, 0.016625, 0.00952, 0.013403, 0.131979, 0.133),
+    ("rotation_3_pitch60_yaw0_roll0", 20, 0.1, 3.314, 3.795592, 0.549869, 151.606785, 5.498689, 0.016865, 0.016241, 0.00884, 0.016597, 0.059779, 0.062887),
+    ("rotation_3_pitch60_yaw0_roll0", 30, 0.1, 2.335169, 2.969923, 0.560573, 130.924923, 5.605727, 0.020572, 0.020561, 0.019051, 0.015939, 0.056568, 0.060266),
+    ("rotation_3_pitch60_yaw0_roll0", 40, 0.1, 1.848679, 2.556963, 0.564706, 86.312607, 5.647059, 0.026639, 0.01318, 0.007004, 0.011871, 0.061246, 0.062833),
+    ("rotation_3_pitch60_yaw0_roll0", 50, 0.1, 1.557729, 2.309156, 0.557492, 90.908121, 5.574924, 0.034336, 0.013507, 0.017539, 0.010406, 0.064352, 0.06592),
+    ("rotation_3_pitch60_yaw0_roll0", 60, 0.1, 1.364156, 2.143942, 0.55, 62.229228, 5.5, -0.071381, 0.016119, 0.016552, 0.011567, 0.120422, 0.121423),
+    ("rotation_3_pitch60_yaw0_roll0", 70, 0.1, 1.226083, 2.025927, 0.54359, 62.803051, 5.435897, -0.082562, 0.015771, 0.015406, 0.013542, 0.119159, 0.120289),
+    ("rotation_3_pitch60_yaw0_roll0", 80, 0.1, 1.122635, 1.937414, 0.536232, 63.447999, 5.362319, -0.095281, 0.01462, 0.018804, 0.011569, 0.119858, 0.120699),
+    ("rotation_3_pitch60_yaw0_roll0", 90, 0.1, 1.042238, 1.86857, 0.52459, 31.322283, 5.245902, 0.058228, 0.018405, 0.0, 0.016237, 0.0635, 0.066135),
+    ("rotation_3_pitch60_yaw0_roll0", 100, 0.1, 0.977961, 1.813494, 0.492727, 31.011676, 4.927273, 0.064476, 0.033442, 0.0, 0.027366, 0.0635, 0.070737),
+]
+
+cols = ["rotation","distance_m","frame_dt_s","target_extent_az_deg","target_extent_el_deg","KPI_1_TP_Prob","KPI_2_Angular_Cluster_Density_deg^-2","KPI_3_Revisit_Rate","KPI_8_Radial_Accuracy_m","KPI_9_az_std_deg","KPI_9_el_std_deg","KPI_10_az_abs_deg","KPI_10_el_abs_deg","KPI_10_mag_abs_deg"]
+df = pd.DataFrame(rows, columns=cols)
+
+# Derived fields
+df["frame_rate_hz"] = 1.0/df["frame_dt_s"]
+df["KPI_3_from_KPI_1"] = df["KPI_1_TP_Prob"] * df["frame_rate_hz"]
+df["KPI_3_diff"] = df["KPI_3_Revisit_Rate"] - df["KPI_3_from_KPI_1"]
+
+# Show the dataframe to the user
+display_dataframe_to_user("KPI summary (parsed from your table)", df)
+
+# --- Plot 1: KPI-1 vs distance (lines per rotation) ---
+plt.figure()
+for rot, g in df.groupby("rotation"):
+    g2 = g.sort_values("distance_m")
+    plt.plot(g2["distance_m"], g2["KPI_1_TP_Prob"], marker="o", label=rot)
+plt.xlabel("Distance (m)")
+plt.ylabel("KPI-1: TP Probability (per frame)")
+plt.title("KPI-1 vs Distance")
+plt.legend()
+plt.tight_layout()
+plt.savefig("/mnt/data/kpi1_vs_distance.png", dpi=160)
+plt.close()
+
+# --- Plot 2: KPI-3 vs distance (lines per rotation) ---
+plt.figure()
+for rot, g in df.groupby("rotation"):
+    g2 = g.sort_values("distance_m")
+    plt.plot(g2["distance_m"], g2["KPI_3_Revisit_Rate"], marker="o", label=rot)
+plt.xlabel("Distance (m)")
+plt.ylabel("KPI-3: Revisit Rate (Hz)")
+plt.title("KPI-3 vs Distance")
+plt.legend()
+plt.tight_layout()
+plt.savefig("/mnt/data/kpi3_vs_distance.png", dpi=160)
+plt.close()
+
+# --- Plot 3: KPI-2 (Angular Cluster Density) vs distance ---
+plt.figure()
+for rot, g in df.groupby("rotation"):
+    g2 = g.sort_values("distance_m")
+    plt.plot(g2["distance_m"], g2["KPI_2_Angular_Cluster_Density_deg^-2"], marker="o", label=rot)
+plt.xlabel("Distance (m)")
+plt.ylabel("KPI-2: Angular Cluster Density (deg$^{-2}$)")
+plt.title("KPI-2 vs Distance (check radius consistency)")
+plt.legend()
+plt.tight_layout()
+plt.savefig("/mnt/data/kpi2_vs_distance.png", dpi=160)
+plt.close()
+
+# --- Plot 4: KPI-8 (Radial Accuracy) vs distance ---
+plt.figure()
+for rot, g in df.groupby("rotation"):
+    g2 = g.sort_values("distance_m")
+    plt.plot(g2["distance_m"], g2["KPI_8_Radial_Accuracy_m"], marker="o", label=rot)
+plt.xlabel("Distance (m)")
+plt.ylabel("KPI-8: Radial Accuracy (m)")
+plt.title("KPI-8 vs Distance")
+plt.legend()
+plt.tight_layout()
+plt.savefig("/mnt/data/kpi8_vs_distance.png", dpi=160)
+plt.close()
+
+# --- Plot 5: KPI-10 magnitude abs deg vs distance ---
+plt.figure()
+for rot, g in df.groupby("rotation"):
+    g2 = g.sort_values("distance_m")
+    plt.plot(g2["distance_m"], g2["KPI_10_mag_abs_deg"], marker="o", label=rot)
+plt.xlabel("Distance (m)")
+plt.ylabel("KPI-10: Angular Accuracy |mag| (deg)")
+plt.title("KPI-10 (magnitude) vs Distance")
+plt.legend()
+plt.tight_layout()
+plt.savefig("/mnt/data/kpi10_mag_vs_distance.png", dpi=160)
+plt.close()
+
+# --- Plot 6: KPI-9 az/el std vs distance (averaged for simplicity) ---
+plt.figure()
+for rot, g in df.groupby("rotation"):
+    g2 = g.sort_values("distance_m")
+    plt.plot(g2["distance_m"], g2["KPI_9_az_std_deg"], marker="o", label=f"{rot} az std")
+    plt.plot(g2["distance_m"], g2["KPI_9_el_std_deg"], marker="x", label=f"{rot} el std")
+plt.xlabel("Distance (m)")
+plt.ylabel("KPI-9: Angular Precision (std deg)")
+plt.title("KPI-9 (az & el std) vs Distance")
+plt.legend()
+plt.tight_layout()
+plt.savefig("/mnt/data/kpi9_std_vs_distance.png", dpi=160)
+plt.close()
+
+# Save a quick textual summary file
+summary_lines = []
+summary_lines.append(f"Rows: {len(df)}")
+summary_lines.append(f"KPI-3 minus KPI-1*frame_rate -> mean diff: {df['KPI_3_diff'].mean():.6f}, max abs diff: {df['KPI_3_diff'].abs().max():.6f}")
+for rot, g in df.groupby("rotation"):
+    g2 = g.sort_values("distance_m")
+    summary_lines.append(f"\n[{rot}]")
+    summary_lines.append(f"  KPI-1 mean: {g2['KPI_1_TP_Prob'].mean():.4f}, std: {g2['KPI_1_TP_Prob'].std():.4f}")
+    summary_lines.append(f"  KPI-2 mean: {g2['KPI_2_Angular_Cluster_Density_deg^-2'].mean():.2f}")
+    summary_lines.append(f"  KPI-8 mean (m): {g2['KPI_8_Radial_Accuracy_m'].mean():.4f}")
+    summary_lines.append(f"  KPI-10 |mag| mean (deg): {g2['KPI_10_mag_abs_deg'].mean():.4f}")
+
+with open("/mnt/data/kpi_summary.txt", "w") as f:
+    f.write("\n".join(summary_lines))
+
+# Return paths of images to the user by printing them (the assistant will link them)
+print("Saved plots:")
+print("/mnt/data/kpi1_vs_distance.png")
+print("/mnt/data/kpi3_vs_distance.png")
+print("/mnt/data/kpi2_vs_distance.png")
+print("/mnt/data/kpi8_vs_distance.png")
+print("/mnt/data/kpi10_mag_vs_distance.png")
+print("/mnt/data/kpi9_std_vs_distance.png")
+print("Summary text: /mnt/data/kpi_summary.txt")
+--------------------
 
 def _load_vicinity_corners(vicinity_json_path: str) -> np.ndarray:
     with open(vicinity_json_path, "r") as f:

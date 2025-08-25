@@ -40,7 +40,7 @@ def draw_target_vicinity_box(vicinity_path):
 
 
 def visualize(folder_path):
-    pcd_path = os.path.join(folder_path, "target_vicinity_points.pcd")
+    pcd_path = os.path.join(folder_path, "frame_000.pcd")
     cluster_map_path = os.path.join(folder_path, "cluster_map.json")
     vicinity_path = os.path.join(folder_path, "target_vicinity.json")
 

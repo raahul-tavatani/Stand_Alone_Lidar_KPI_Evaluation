@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 # viz_clusters.py
-# Visualize DIN SAE 91471-style angular clustering (azimuth/elevation).
+# Visualize angular clustering (azimuth/elevation) with circular clusters.
 
 import os, re, json, argparse
 import numpy as np
 import open3d as o3d
 import matplotlib.pyplot as plt
-from matplotlib.patches import Circle
+from matplotlib.patches import Ellipse
 from collections import defaultdict
 
 # ----------------------------- IO & Filtering -----------------------------
@@ -44,7 +44,7 @@ def _load_folder_points(folder: str, subsample: int = 0):
     Returns:
       frame_ids: (N,) int
       points:    (N,3) float32
-      frames_list: sorted unique frame ids (for info)
+      frames_list: sorted unique frame ids
     """
     vjson = os.path.join(folder, "target_vicinity.json")
     if not os.path.exists(vjson):
@@ -52,31 +52,23 @@ def _load_folder_points(folder: str, subsample: int = 0):
 
     corners = _load_vicinity_corners(vjson)
 
-    # Prefer already filtered file if present
-    pref_pcd = os.path.join(folder, "target_vicinity_points.pcd")
-    points_list = []
-    frame_ids_list = []
-
-    if os.path.exists(pref_pcd):
-        # All frames concatenated without per-frame IDs—fallback: parse frame_*.pcd anyway
-        pass  # we'll still iterate frames for correct frame IDs
-
     pcd_files = sorted([f for f in os.listdir(folder) if re.match(r"frame_\d+\.pcd", f)])
     if not pcd_files:
         raise RuntimeError(f"No frame_*.pcd in {folder}")
 
+    pts_all, fids_all = [], []
     for fname in pcd_files:
         f_id = int(re.findall(r"\d+", fname)[0])
         pts = _extract_points_in_target_vicinity(os.path.join(folder, fname), corners)
         if isinstance(pts, np.ndarray) and pts.ndim == 2 and pts.shape[1] == 3 and pts.size > 0:
-            points_list.append(pts.astype(np.float32, copy=False))
-            frame_ids_list.append(np.full(pts.shape[0], f_id, dtype=np.int32))
+            pts_all.append(pts.astype(np.float32, copy=False))
+            fids_all.append(np.full(pts.shape[0], f_id, dtype=np.int32))
 
-    if not points_list:
+    if not pts_all:
         raise RuntimeError(f"No points inside target vicinity for {folder}")
 
-    points = np.vstack(points_list)
-    frame_ids = np.concatenate(frame_ids_list)
+    points = np.vstack(pts_all)
+    frame_ids = np.concatenate(fids_all)
 
     if subsample and points.shape[0] > subsample:
         sel = np.random.choice(points.shape[0], subsample, replace=False)
@@ -99,7 +91,7 @@ def median_step_deg(az: np.ndarray, el: np.ndarray, frame_ids: np.ndarray, subsa
     steps = []
     for f in np.unique(frame_ids):
         idx = np.where(frame_ids == f)[0]
-        if idx.size < 3: 
+        if idx.size < 3:
             continue
         if idx.size > subsample_per_frame:
             idx = np.random.choice(idx, subsample_per_frame, replace=False)
@@ -202,13 +194,23 @@ def cluster_angular(az, el, frame_ids, rc_deg=None):
 def plot_clusters(az, el, labels, centers, rc_deg, out_path=None, show=False, title=None):
     K = centers.shape[0]
     fig, ax = plt.subplots(figsize=(10, 6))
+    ax.set_aspect('equal', adjustable='box')  # keep circles circular in deg
+    try:
+        ax.set_box_aspect(1)                  # square box if supported
+    except Exception:
+        pass
+
     sc = ax.scatter(az, el, c=labels, s=5, alpha=0.75, cmap="tab20", edgecolors="none")
     ax.scatter(centers[:,0], centers[:,1], s=50, marker="x", linewidths=1.5, color="k", label="cluster centers")
 
-    # radius circles
+    # Draw radius circles (as Ellipses with equal width/height in data coords)
     for j in range(K):
-        circ = Circle((centers[j,0], centers[j,1]), rc_deg, fill=False, linewidth=0.6, alpha=0.6)
-        ax.add_patch(circ)
+        ax.add_patch(Ellipse(
+            (centers[j,0], centers[j,1]),
+            width=2*rc_deg, height=2*rc_deg,
+            fill=False, linewidth=0.8, alpha=0.7,
+            transform=ax.transData
+        ))
 
     ax.set_xlabel("Azimuth [deg]")
     ax.set_ylabel("Elevation [deg]")
@@ -225,9 +227,13 @@ def plot_clusters(az, el, labels, centers, rc_deg, out_path=None, show=False, ti
     plt.close(fig)
 
 def plot_by_frame(az, el, frame_ids, out_path=None, show=False, title=None):
-    # Optional second view: color by frame id
     fig, ax = plt.subplots(figsize=(10, 6))
-    sc = ax.scatter(az, el, c=frame_ids, s=5, alpha=0.75, cmap="viridis", edgecolors="none")
+    ax.set_aspect('equal', adjustable='box')
+    try:
+        ax.set_box_aspect(1)
+    except Exception:
+        pass
+    sc = ax.scatter(az, el, c=frame_ids, s=5, alpha=0.8, cmap="viridis", edgecolors="none")
     ax.set_xlabel("Azimuth [deg]")
     ax.set_ylabel("Elevation [deg]")
     ax.set_title(title or "Points colored by frame id")
@@ -244,12 +250,12 @@ def plot_by_frame(az, el, frame_ids, out_path=None, show=False, title=None):
 # ----------------------------- Main -----------------------------
 
 def main():
-    ap = argparse.ArgumentParser(description="Visualize angular clustering (DIN SAE 91471 style)")
-    ap.add_argument("--folder", required=True, help="Folder containing frame_*.pcd and target_vicinity.json")
+    ap = argparse.ArgumentParser(description="Visualize angular clustering (DIN SAE style)")
+    ap.add_argument("--folder", required=True, help="Folder with frame_*.pcd and target_vicinity.json")
     ap.add_argument("--rc_deg", type=float, default=None, help="Cluster radius in degrees (default: auto ~ 0.5*median step)")
-    ap.add_argument("--subsample", type=int, default=0, help="Randomly subsample total points to this many before clustering")
-    ap.add_argument("--save", default=None, help="Path to save cluster plot (PNG).")
-    ap.add_argument("--save_frames", default=None, help="Optional: save 'by-frame' plot (PNG).")
+    ap.add_argument("--subsample", type=int, default=0, help="Randomly subsample total points before clustering")
+    ap.add_argument("--save", default=None, help="Path to save cluster plot (PNG)")
+    ap.add_argument("--save_frames", default=None, help="Path to save by-frame plot (PNG)")
     ap.add_argument("--show", action="store_true", help="Show interactive windows")
     args = ap.parse_args()
 
@@ -259,7 +265,6 @@ def main():
 
     print(f"[INFO] Auto rc_deg={rc:.4f}° (override with --rc_deg)")
     print(f"[INFO] Points: {len(az)} | Clusters: {centers.shape[0]} | Frames in slice: {len(frames_list)}")
-    # Quick summary
     singles = sum(1 for c in info if c["frame_count"] == 1)
     print(f"[INFO] Singleton clusters (frame_count=1): {singles}")
 

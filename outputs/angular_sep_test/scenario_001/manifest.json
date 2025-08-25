@@ -1,0 +1,20 @@
+{
+  "test": "angular_separability",
+  "frame_dt_s": 0.1,
+  "capture_frames": 10,
+  "ranges_m": [
+    10,
+    20,
+    30,
+    50
+  ],
+  "separations_deg": [
+    0.2,
+    0.3,
+    0.5,
+    1.0
+  ],
+  "z_pos_m": 1.7,
+  "target_grade": "A",
+  "note": "Two identical targets at same range; symmetric azimuths \u00b1\u0394\u03b8/2."
+}

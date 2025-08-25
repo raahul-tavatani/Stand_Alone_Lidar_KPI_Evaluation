@@ -24,7 +24,7 @@ def spawn_lidar(world, blueprint_library, location,
 
     # Align sensor tick to one full revolution by default
     if sensor_tick is None:
-        sensor_tick = 0.1 / rotation_frequency
+        sensor_tick = 1 / rotation_frequency
     lidar_bp.set_attribute('sensor_tick', str(sensor_tick))
 
     # Make returns as inclusive as possible (avoid CARLA’s intensity drop-off)
